@@ -1,0 +1,86 @@
+{% extends "_base.html" %}
+
+{% block content %}
+<h2 class="text-center mt-5 font-bold text-lg text-teal-800">Laporan Analisis Permintaan Data</h2>
+<div
+        class="max-w-lg mt-5 p-4 my-auto mx-auto backdrop-blur-sm bg-white rounded-xl shadow-xl"
+      ><form action="{% url 'lapd_entry' %}" method="post">
+        {% csrf_token %}
+        <div class="relative">
+            <input type="text" list="cities" id="asal_nd" name="unit" class="mt-4 mb-3 w-full block px-3 py-2 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 rounded-md border  dark:text-slate-950 appearance-none peer" placeholder=" " >
+            <datalist id="cities">
+                {% for city in cities %}
+                <option value="{{ city.name }}"></option>
+                {% endfor %}
+            </datalist>
+            <label for="asal_nd" class="absolute text-md text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-3 scale-75 top-1 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-1 peer-focus:scale-75 peer-focus:-translate-y-3 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Unit Kerja</label>
+        </div>
+        
+        <div class="relative">
+        <input type="text" id="no_nd" name="no_nd" class="mb-3 w-full block px-3 py-2 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 rounded-md border  dark:text-slate-950 appearance-none peer" placeholder=" " />
+        <label for="no_nd" class="absolute text-md text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-3 scale-75 top-1 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-1 peer-focus:scale-75 peer-focus:-translate-y-3 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Nomor ND</label>
+    </div>
+    <div class="relative">
+        <input type="date" id="tgl_nd" name="tgl_nd" class="w-full mb-3 block px-3 py-2 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 rounded-md border  dark:text-slate-950 appearance-none peer" placeholder=" " />
+        <label for="tgl_nd" class="absolute text-md text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-3 scale-75 top-1 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-1 peer-focus:scale-75 peer-focus:-translate-y-3 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Tanggal ND</label>
+    </div>
+    <div class="relative">
+        <input type="text" id="nama" name="nama" class="w-full mb-3 block px-3 py-2 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 rounded-md border  dark:text-slate-950 appearance-none peer" placeholder=" " />
+        <label for="nama" class="absolute text-md text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-3 scale-75 top-1 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-1 peer-focus:scale-75 peer-focus:-translate-y-3 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Nama</label>
+    </div>
+    <div class="relative">
+        <input type="text" id="nip" name="nip" class="w-full mb-3 block px-3 py-2 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 rounded-md border  dark:text-slate-950 appearance-none peer" placeholder=" " />
+        <label for="nip" class="absolute text-md text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-3 scale-75 top-1 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-1 peer-focus:scale-75 peer-focus:-translate-y-3 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">NIP</label>
+    </div>
+    <div class="relative">
+        <input type="text" id="jabatan" name="jabatan" class="w-full mb-3 block px-3 py-2 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 rounded-md border  dark:text-slate-950 appearance-none peer" placeholder=" " />
+        <label for="jabatan" class="absolute text-md text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-3 scale-75 top-1 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-1 peer-focus:scale-75 peer-focus:-translate-y-3 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Jabatan</label>
+    </div>
+    <div class="relative">
+        <input type="text" id="jenis_data" name="jns_data" class="w-full mb-3 block px-3 py-2 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 rounded-md border  dark:text-slate-950 appearance-none peer" placeholder=" " />
+        <label for="jenis_data" class="absolute text-md text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-3 scale-75 top-1 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-1 peer-focus:scale-75 peer-focus:-translate-y-3 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Jenis Data</label>
+    </div>
+    <div class="relative">
+        <textarea id="uraian" name="uraian" class="w-full mb-3 block px-3 py-2 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 rounded-md border  dark:text-slate-950 appearance-none peer" placeholder=" " ></textarea>
+        <label for="uraian" class="absolute text-md text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-3 scale-75 top-1 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-1 peer-focus:scale-75 peer-focus:-translate-y-3 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Uraian/Keterangan</label>
+    </div>
+    <button type="submit" class="mt-3 px-5 py-2 mx-auto block bg-green-600 hover:bg-green-700 text-white rounded">
+    <i class="icon-face-grimace mr-2"></i>
+    Save Data LAPD
+</button>
+      </form>
+</div>
+<table id="example" class="display border-red-100" style="width:100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Age</th>
+                <th>Start date</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Tiger Nixon</td>
+                <td>System Architect</td>
+                <td>Edinburgh</td>
+                <td>61</td>
+                <td>2011-04-25</td>
+                <td>$320,800</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Age</th>
+                <th>Start date</th>
+                <th>Salary</th>
+            </tr>
+        </tfoot>
+    </table>
+
+{% endblock content %}
