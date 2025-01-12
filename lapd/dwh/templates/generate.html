@@ -1,0 +1,31 @@
+{% extends "_base.html" %}
+
+{% block content %}
+<h2 class="text-center mt-20 font-bold text-lg text-teal-800">Generate Laporan Analisis Permintaan Data</h2>
+<div class="max-w-screen-lg mt-5 p-4 my-auto mx-auto backdrop-blur-sm bg-white rounded-xl shadow-xl">
+<table id="example" class="border-collapse border border-slate-400" style="width:100%">
+    <thead>
+        <tr >
+            <th class="border border-teal-700">Unit Kerja</th>
+            <th class="border border-teal-700">Nomor ND</th>
+            <th class="border border-teal-700">Nama</th>
+            <th class="border border-teal-700">Aksi</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>{% for x in datas %}
+            <td class="border border-teal-700">{{x.unit}}</td>
+            <td class="border border-teal-700">{{x.no_nd}}</td>
+            <td class="border border-teal-700">{{x.nama}}</td>
+            <td class="border border-teal-700">{{x.nama}}</td>
+            {% endfor %}
+        </tr>
+    </tbody>
+</table>
+</div>
+<a href="{%url 'index'%}" ><button
+    class="bg-sky-500 w-24 my-10 px-5 py-2 mx-auto block text-white font-semibold rounded-full hover:bg-sky-700 active:bg-slate-400 focus:ring focus:ring-sky-300"
+  >
+   Back
+  </button></div></a>
+{% endblock content %}

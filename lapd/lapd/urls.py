@@ -16,10 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from dwh.views import index,lapd_entry
+from dwh.views import index,lapd_entry,generate
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
     path('lapd/', lapd_entry, name='lapd_entry'),
+    path('generate/', generate, name='generate'),
 ]

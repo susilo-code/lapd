@@ -23,15 +23,16 @@ def lapd_entry(request):
         uraian = request.POST.get('uraian')
         lapd = Lapd(unit=unit, no_nd=no_nd, tgl_nd=tgl_nd, nama=nama, nip=nip, jabatan=jabatan, jns_data=jns_data, uraian=uraian)
         lapd.save()
-        return redirect('index')
+        return redirect('generate')
     else:
         return HttpResponse("Invalid request method.")
 
 
-def home(request):
-    context ={}
-    context['form']= LapdForm()
-    return render(request, "home.html", context)
+def generate(request):
+    datas = Lapd.objects.all()
+    return render(request, 'generate.html', {'datas':datas})
+
+
 
 	
 	
